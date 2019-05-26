@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <h3 class="center">Courses</h3>
+  </div>
+  
+  <div class="row">
+    
+    <div class="col s5">
+      <div class="row">
+        <div class="col">
+          <a [routerLink]="['add']"
+            class="btn-floating btn-large green waves-effect waves-light tooltipped"
+            data-position="right" data-tooltip="Add a new course">
+            <i class="large material-icons">add</i>
+          </a>
+        </div>
+      </div>
+
+      Total: {{ totalCoursesDisplayed }}
+      <div class="input-field">
+        <i class="material-icons">filter_list</i>
+        <input type="text" id="filter" [(ngModel)]="filterString">
+        <label for="filter">Filter</label>
+      </div>
+      
+      <!-- <div class="collection">
+        <a [routerLink]="[course.id]"
+          *ngFor="let course of courses"
+          class="collection-item black-text"
+          routerLinkActive="active blue lighten-4">
+          {{ course.name }}
+        </a>
+      </div> -->
+      <cdk-virtual-scroll-viewport
+        *ngIf="courses && filterCourses().length > 0"
+        itemSize="40"
+        class="collection scrolling">
+        <a [routerLink]="[course.id]"
+          *ngFor="let course of filterCourses()"
+          class="collection-item black-text">
+          {{ course.name }}
+        </a>
+      </cdk-virtual-scroll-viewport>
+
+    </div>
+
+    <div class="col s6 push-s1">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+</div>

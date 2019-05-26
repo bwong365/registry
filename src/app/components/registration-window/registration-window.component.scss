@@ -1,0 +1,70 @@
+.paired-list {
+  border: solid 1px #ccc;
+  min-height: 3em;
+  background: white;
+  border-radius: 4px;
+  overflow: scroll;
+  display: block;
+  height: calc(100vh - 400px) 
+}
+
+::-webkit-scrollbar {
+  width: 5px;  /* Remove scrollbar space */
+  //background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(200, 200, 200, 0.5);
+}
+
+.paired-box {
+  padding: .7em 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.paired-box:last-child {
+  border: none;
+}
+
+.paired-list.cdk-drop-list-dragging .paired-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.input-field {
+  // input {
+  //   text-indent: 30px;
+  // }
+
+  i {
+    color: #aaa;
+    //position: absolute;
+    top: 10px;
+    //right: 0px;
+    font-size: 2rem;
+  }
+}

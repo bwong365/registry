@@ -1,0 +1,66 @@
+<div class="container">
+  <h2 class="center">Course Registration</h2>
+  <div class="col right">
+    <a [routerLink]="['/students', student.id]"
+      class="btn-floating right red waves-effect waves-light tooltipped"
+      data-position="top" data-tooltip="Cancel">
+      <i class="material-icons">arrow_back</i>
+    </a>
+  </div>
+  <h4 class="center">{{ student.firstName }} {{ student.lastName }} - ID:  {{ studentId }}</h4>
+  <div class="divider"></div>
+  
+  <div class="section">
+    <div class="row center">
+      <div class="col s3 push-s3">
+        <button class="btn waves-effect waves-light" type="button" (click)="onSave()">Save</button>
+      </div>
+      <div class="col s3 push-s3">
+        <button class="btn waves-effect waves-light" type="button" (click)="onReset()">Reset</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="section">
+    <!-- <div class="input-field">
+    <i class="prefix material-icons">filter_list</i>
+    <input type="text" id="filter" [(ngModel)]="filterString">
+    <label for="filter">Filter</label>
+  </div> -->
+
+    <div class="row">
+
+      <div class="col s6">
+        <h6 class="center">Registered Classes:</h6>
+        <div class="paired-list"
+          cdkDropList
+          #registeredList="cdkDropList"
+          [cdkDropListConnectedTo]="unregisteredList"
+          [cdkDropListData]="registeredCourses"
+          (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let course of registeredCourses"
+            class="paired-box" cdkDrag>
+            {{ course.name }}
+          </div>
+        </div>
+      </div>
+ 
+      <div class="col s6">
+        <h6 class="center">Available Classes:</h6>
+        <div class="paired-list"
+          cdkDropList
+          #unregisteredList="cdkDropList"
+          [cdkDropListConnectedTo]="registeredList"
+          [cdkDropListData]="unregisteredCourses"
+          (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let course of unregisteredCourses"
+          class="paired-box" cdkDrag>
+            {{ course.name }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
