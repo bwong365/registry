@@ -1,0 +1,29 @@
+<div class="col right">
+  <a [routerLink]="['..', 'edit', instructorId]" class="btn-floating right red waves-effect waves-light tooltipped" data-position="top" data-tooltip="Edit instructor"><i class="material-icons">edit</i></a>
+</div>
+<div class="col right">
+  <a [routerLink]="['../..','courses']" class="btn-floating right blue waves-effect waves-light tooltipped" data-position="down" data-tooltip="Assign courses"><i class="material-icons">school</i></a>
+</div>
+  
+<h5>{{ firstName + ' ' + lastName }}</h5>
+<div class="divider"></div>
+ID: {{ instructorId }}
+<br><br>
+  
+  
+<h6>Assigned Courses: {{ courses.length }}</h6>
+<table *ngIf="courses && courses.length > 0">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let course of courses">
+      <td><a [routerLink]="['../..','courses', course.id]">{{ course.name }}</a></td>
+      <td>{{ course.id }}</td>
+    </tr>
+  </tbody>
+</table>
+  

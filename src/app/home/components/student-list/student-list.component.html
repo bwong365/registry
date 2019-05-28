@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <h3 class="center">Students</h3>
+  </div>
+    
+  <div class="row">
+    <div class="col s5">
+
+      <div class="row">
+        <a [routerLink]="['register']" 
+          class="btn-floating btn-large blue waves-effect waves-light tooltipped"
+          data-position="right" data-tooltip="Add a new student">
+          <i class="large material-icons">person_add</i>
+        </a>
+      </div>
+
+      Total: {{ totalStudentsDisplayed }}
+      <div class="input-field">
+        <i class="material-icons">filter_list</i>
+        <input type="text" id="filter" [(ngModel)]="filterString">
+        <label for="filter">Filter</label>
+      </div>
+
+        <!-- <li *ngFor="let student of students | filter:filterString:'lastName':'firstName'" class="collection-item"> -->
+        <!-- <div *ngIf="students && filterStudents().length > 0" class="collection">
+          <a [routerLink]="[student.id]" *ngFor="let student of filterStudents()" class="collection-item black-text" [routerLinkActive]="['active', 'amber', 'lighten-4']">
+              {{ student.firstName + ' ' + student.lastName }}
+          </a>
+        </div> -->
+      <cdk-virtual-scroll-viewport
+        *ngIf="students && filterStudents().length > 0"
+        itemSize="40" 
+        class="collection scrolling">
+        <a [routerLink]="[student.id]"
+          *cdkVirtualFor="let student of filterStudents()"
+          class="collection-item black-text">
+          <!-- [routerLinkActive]="['active', 'amber', 'lighten-4']" -->
+          {{ student.firstName }} {{ student.lastName }}
+        </a>
+      </cdk-virtual-scroll-viewport>
+
+    </div>
+    <div class="col s6 push-s1">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+</div>

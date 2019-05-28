@@ -1,0 +1,43 @@
+<div class="col right">
+  <a [routerLink]="['..']" class="btn-floating right red waves-effect waves-light tooltipped" data-position="top" data-tooltip="Cancel"><i class="material-icons">arrow_back</i></a>
+</div>
+
+<h5>Add a student:</h5>
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+  <div class="input-field">
+    <input
+      #firstName="ngModel"
+      ngModel
+      required
+      pattern="\w{2,}"
+      type="text"
+      id="firstName"
+      name="firstName">
+    <label for="firstName">First Name</label>
+    <span *ngIf="firstName.touched && firstName.errors" class="help-block">
+      <span *ngIf="firstName.errors['required']">First name is required</span>
+      <span *ngIf="firstName.errors['pattern']">Name is invalid</span>
+    </span>
+  </div>
+  
+  <div class="input-field">
+    <input
+      #lastName="ngModel"
+      ngModel
+      required
+      pattern="\w{2,}"
+      type="text"
+      id="lastName" 
+      name="lastName">
+    <label for="lastName">Last Name</label>
+    <span *ngIf="lastName.touched && lastName.errors" class="help-block">
+      <span *ngIf="lastName.errors['required']">Last name is required</span>
+      <span *ngIf="lastName.errors['pattern']">Name is invalid</span>
+    </span>
+  </div>
+
+  <div class="input-field">
+    <button class="btn green waves-effect waves-light" type="submit" [disabled]="!form.valid">Register</button>
+  </div>
+
+</form>

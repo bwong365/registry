@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans&display=swap');
+.fill {
+  background-image: url("5Vf1fcM.jpg");
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  position: fixed;
+  z-index: -999;
+}
+
+// .darken {
+//   background-color: rgba(0, 0, 0, 0.637);
+//   height: 100vh;
+//   width: 100vw;
+//   position: fixed;
+// }
+
+.heading {
+  font-weight: 500;
+  font-family: 'Merriweather Sans', sans-serif;
+  color: #0558a4;
+}
+
+.flex {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.card {
+  max-width: 70%;
+}
+
+.logo {
+  max-width: 100%;
+}
+
+.flexy {  
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.center {
+  justify-content: center;
+}

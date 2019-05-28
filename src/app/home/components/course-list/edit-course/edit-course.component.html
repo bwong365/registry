@@ -1,0 +1,79 @@
+<div class="col right">
+  <a [routerLink]="['../..', model.courseId]" class="btn-floating right red waves-effect waves-light tooltipped" data-position="top" data-tooltip="Cancel"><i class="material-icons">arrow_back</i></a>
+</div>
+<h5>Edit Course:</h5>
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+  <div class="input-field">
+    <input
+      #name="ngModel"
+      [ngModel]="model.courseName"
+      required
+      pattern="\w{2,}.*"
+      type="text"
+      id="name"
+      name="name">
+    <label for="name">Course Name</label>
+    <span *ngIf="name.touched && name.errors" class="help-block">
+      <span *ngIf="name.errors['required']">Course name is required</span>
+      <span *ngIf="name.errors['pattern']">Name is invalid</span>
+    </span>
+  </div>
+  
+  <div class="input-field">
+    <textarea class="materialize-textarea"
+      #description="ngModel"
+      [ngModel]="model.courseDescription"
+      pattern="\w+.*"
+      type="text"
+      id="description" 
+      name="description"></textarea>
+    <label for="description">Course Description</label>
+    <span *ngIf="description.touched && description.errors" class="help-block">
+      <span *ngIf="description.errors['pattern']">Description is invalid</span>
+    </span>
+  </div>
+
+  <div class="input-field">
+    <select class="browser-default"
+      #instructor="ngModel"
+      [ngModel]="model.instructorId"
+      id="instructor"
+      name="instructor">
+      <option value="0">No instructor</option>
+      <option *ngFor="let instructor of instructors" [value]="instructor.id">{{ instructor.firstName }} {{ instructor.lastName }}</option>
+    </select>
+  </div>
+
+  <div class="input-field">
+    <button class="btn green waves-effect waves-light" type="submit" [disabled]="!form.valid">Save Changes</button>
+  </div>
+  <div class="input-field">
+    <button class="btn indigo waves-effect waves-light" type="button" (click)="onReset()">Reset Form</button>
+  </div>
+  <div class="input-field">
+    <button class="btn red waves-effect waves-light modal-trigger" data-target="deleteModal" type="button">Delete</button>
+  </div>
+</form>
+
+<!-- Modal Structure -->
+<div id="deleteModal" class="modal">
+  <div class="modal-content">
+    <h3 class="center">Warning: Deleting {{ model.courseName }}</h3>
+    <br>
+    <h5 class="center" *ngIf="students && students.length > 0">
+      {{ model.courseName }} has {{ students.length }} {{ students.length > 1 ? 'students' : 'student' }} registered!
+    </h5>
+    <h5 class="center">Are you sure you want to delete {{ model.courseName }}?</h5>
+  </div>
+  <div class="modal-footer">
+    <div class="container">
+      <div class="col s6 pull-s2">
+        <a class="modal-close waves-effect waves-light btn red black-text lighten-2">Cancel</a>
+      </div>
+      <div class="col s6 right pull-s1">
+        <a (click)="onDelete()" class="modal-close waves-effect waves-light btn green black-text lighten-2">Confirm</a>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer"></div>
+</div>

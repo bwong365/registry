@@ -1,0 +1,71 @@
+<div class="col right">
+  <a [routerLink]="['../..', model.studentId]" class="btn-floating right red waves-effect waves-light tooltipped" data-position="top" data-tooltip="Cancel"><i class="material-icons">arrow_back</i></a>
+</div>
+
+<h5>Edit student:</h5>
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+  <div class="input-field">
+    <input
+      #firstName="ngModel"
+      [ngModel]="model.firstName"
+      required
+      pattern="\w{2,}"
+      type="text"
+      id="firstName"
+      name="firstName">
+    <label for="firstName">First Name</label>
+    <span *ngIf="firstName.touched && firstName.errors" class="help-block">
+      <span *ngIf="firstName.errors['required']">First name is required</span>
+      <span *ngIf="firstName.errors['pattern']">Name is invalid</span>
+    </span>
+  </div>
+  
+  <div class="input-field">
+    <input
+      #lastName="ngModel"
+      [ngModel]="model.lastName"
+      required
+      pattern="\w{2,}"
+      type="text"
+      id="lastName" 
+      name="lastName">
+    <label for="lastName">Last Name</label>
+    <span *ngIf="lastName.touched && lastName.errors" class="help-block">
+      <span *ngIf="lastName.errors['required']">Last name is required</span>
+      <span *ngIf="lastName.errors['pattern']">Name is invalid</span>
+    </span>
+  </div>
+
+  <div class="input-field">
+    <button class="btn green waves-effect waves-light" type="submit" [disabled]="!form.valid">Save Changes</button>
+  </div>
+  <div class="input-field">
+      <button class="btn indigo waves-effect waves-light" type="button" (click)="onReset()">Reset Form</button>
+  </div>
+  <div class="input-field">
+    <button class="btn red waves-effect waves-light modal-trigger" data-target="deleteModal" type="button">Delete</button>
+  </div>
+</form>
+
+<!-- Modal Structure -->
+<div id="deleteModal" class="modal">
+  <div class="modal-content">
+    <h3 class="center">Warning: Deleting {{ model.firstName }} {{ model.lastName }}</h3>
+    <br>
+    <h5 class="center" *ngIf="courses && courses.length > 0">
+      {{ model.firstName }} is registered in {{ courses.length }} {{ courses.length > 1 ? 'courses' : 'course' }}!
+    </h5>
+    <h5 class="center">Are you sure you want to delete {{ model.firstName }} {{ model.lastName }}?</h5>
+  </div>
+  <div class="modal-footer">
+    <div class="container">
+      <div class="col s6 pull-s2">
+        <a class="modal-close waves-effect waves-light btn red black-text lighten-2">Cancel</a>
+      </div>
+      <div class="col s6 right pull-s1">
+        <a (click)="onDelete()" class="modal-trigger modal-close waves-effect waves-light btn green black-text lighten-2" data-target="confirmModal">Confirm</a>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer"></div>
+</div>

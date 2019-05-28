@@ -1,0 +1,25 @@
+<div class="flex">
+  
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let panel of panels" class="col s4">
+        <div (click)="redirect(panel.text)" class="center-flex hoverable card grey waves-effect lighten-4 link">
+          <div class="material-icons" [ngClass]="[panel.text+'-icon']">{{ panel.icon }}</div>
+          <a [routerLink]="[panel.text]" class="btn-flat transparent">{{ panel.text | titlecase}}</a>
+        </div>
+      </div>
+      <!-- <div class="col s4">
+        <div class="center-flex hoverable">
+          <div class="material-icons course-icon">school</div>
+          <a [routerLink]="['courses']" class="btn blue-grey">Courses</a>
+        </div>
+      </div>
+      <div class="col s4">
+        <div class="center-flex hoverable">
+          <div class="material-icons instructor-icon">assignment_ind</div>
+          <a [routerLink]="['instructors']" class="btn blue-grey">Instructors</a>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
