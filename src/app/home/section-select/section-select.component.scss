@@ -1,3 +1,7 @@
+.buffer {
+  margin-top: 10vw;
+}
+
 .flex {
   height: 50vh;
   width: 100vw;
@@ -28,4 +32,9 @@
   flex-direction: column;
   align-items: center;
   padding: 30px 0;
+}
+
+.btn-flat {
+  text-transform: none;
+  font-weight: bold;
 }
