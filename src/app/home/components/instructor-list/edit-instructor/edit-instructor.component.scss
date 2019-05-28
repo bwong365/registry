@@ -1,12 +1,6 @@
-.help-block {
-  color: #cc0000;
-}
+@import '../../../../../styles.scss';
 
-input.ng-invalid.ng-touched {
-  color: #cc0000;
-  border-bottom: 1px solid #cc0000;
-  box-shadow: 0 1px 0 0 #cc0000;
-}
+@include showInvalidInput;
 
 @media screen and (max-width: 600px) {
   .hide-small {

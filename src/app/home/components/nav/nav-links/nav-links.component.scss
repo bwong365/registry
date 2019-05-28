@@ -1,11 +1,13 @@
+@import '../../../../../styles.scss';
+
 .active#studentLink {
-  background-color: #2196f3 !important;
+  background-color: $students-color;
 }
 
 .active#courseLink {
-  background-color: #009688 !important;
+  background-color: $courses-color;
 }
 
 .active#instructorLink {
-  background-color: #4caf50;
+  background-color: $instructors-color;
 }

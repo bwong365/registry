@@ -1,4 +1,3 @@
-.material-icons {
-  font-size: 20rem;
-  color: #42a5f5;
-}
+@import '../../../../../styles.scss';
+
+@include placeholder($students-icon-color);

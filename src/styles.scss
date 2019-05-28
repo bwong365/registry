@@ -1,1 +1,125 @@
-/* You can add global styles to this file, and also import other style files */
+@import './app/colors.scss';
+@import './app//breakpoints.scss';
+
+$students-color: $blue;
+$courses-color: $teal;
+$instructors-color: $green;
+$students-icon-color: $blue;
+$courses-icon-color: $teal;
+$instructors-icon-color: $green;
+
+%flex {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@mixin placeholder($icon-color) {
+  .material-icons {
+    @extend %placeholder-font-size;
+    color: $icon-color;
+  }
+}
+
+@mixin fill($imageUrl) {
+  .fill {
+    background-image: url($imageUrl);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -999;
+  }
+}
+
+@mixin showInvalidInput {
+  .help-block {
+    color: #cc0000;
+  }
+  
+  input.ng-invalid.ng-touched {
+    color: #cc0000;
+    border-bottom: 1px solid #cc0000;
+    box-shadow: 0 1px 0 0 #cc0000;
+  }
+}
+
+@mixin scrolling {
+  .collection-item {
+    margin: 0;
+    height: 40px;
+    white-space: nowrap;
+  }
+  
+  .scrolling {
+    max-width: 100%;
+    min-height: calc(100vh - 420px);
+    overflow: scroll;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;  /* Remove scrollbar space */
+    //background: transparent;  /* Optional: just make scrollbar invisible */
+  }
+  /* Optional: show position indicator in red */
+  ::-webkit-scrollbar-thumb {
+    background: rgba(200, 200, 200, 0.5);
+  }
+}
+
+@mixin stackedScrolling {
+  @media screen and (max-width: $max-width-small) {
+    .scrolling {
+      min-height: 25vh;
+    }
+    h4, h5, h6 {
+      margin-top: -2px;
+    }
+  }  
+}
+
+%filterStyle {
+  // input {
+    //   text-indent: 30px;
+    // }
+    
+  i {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    font-size: 2rem;
+  }
+}
+  
+@mixin compactList {
+  @media screen and (max-width: $max-width-small) {
+    .responsive-heading {
+      margin-bottom: -35px;
+    }
+    .pullup {
+      margin-top: -32px;
+    }
+    .hide-small {
+      display: none;
+    }
+  }
+}
+
+@mixin entityList {
+  .input-field {
+    @extend %filterStyle;
+  }
+
+  @include scrolling;
+  @include stackedScrolling;
+  @include compactList;
+}
+
+
+%placeholder-font-size {
+  font-size: 20rem;
+}

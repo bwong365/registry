@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h3 class="center">Courses</h3>
+    <h3 class="center responsive-heading">Courses</h3>
   </div>
   
   <div class="row pullup">
@@ -21,14 +21,6 @@
         <label for="filter">Filter</label>
       </div>
       
-      <!-- <div class="collection">
-        <a [routerLink]="[course.id]"
-          *ngFor="let course of courses"
-          class="collection-item black-text"
-          routerLinkActive="active blue lighten-4">
-          {{ course.name }}
-        </a>
-      </div> -->
       <cdk-virtual-scroll-viewport
         *ngIf="courses && filterCourses().length > 0"
         itemSize="40"

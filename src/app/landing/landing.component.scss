@@ -1,12 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather+Sans&display=swap');
-.fill {
-  background-image: url("5Vf1fcM.jpg");
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  position: fixed;
-  z-index: -999;
-}
+@import '../../styles.scss';
+
+@include fill('5Vf1fcM.jpg');
 
 // .darken {
 //   background-color: rgba(0, 0, 0, 0.637);
@@ -22,11 +17,9 @@
 }
 
 .flex {
+  @extend %flex;
   height: 100vh;
   width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center
 }
 
 .card {
@@ -38,10 +31,7 @@
 }
 
 .flexy {  
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  @extend %flex;
 }
 
 .center {
