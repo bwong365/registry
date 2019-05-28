@@ -1,0 +1,29 @@
+.collection-item {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.scrolling {
+  max-width: 100%;
+  min-height: calc(100vh - 420px);
+  overflow: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;  /* Remove scrollbar space */
+  //background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: rgba(200, 200, 200, 0.5);
+}
+
+@media screen and (max-width: 600px) {
+  .scrolling {
+    min-height: 25vh;
+  }
+  h4, h5, h6 {
+    margin-top: -2px;
+  }
+}

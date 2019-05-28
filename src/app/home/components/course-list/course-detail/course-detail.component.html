@@ -8,18 +8,14 @@
 <em>ID: {{ courseId }} - {{ courseDescription }}</em>
 <br><br>
 
-<h6>Students Registered: {{ students.length }}</h6>
-<table *ngIf="students && students.length > 0">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>ID</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let student of students">
-      <td><a [routerLink]="['../..','students', student.id]">{{ student.firstName }} {{ student.lastName }}</a></td>
-      <td>{{ student.id }}</td>
-    </tr>
-  </tbody>
-</table>
+<h6>Students registered: {{ students.length }}</h6>
+<cdk-virtual-scroll-viewport
+  *ngIf="students && students.length > 0"
+  itemSize="40"
+  class="collection scrolling">
+  <a [routerLink]="['../../','students',student.id]"
+    *ngFor="let student of students"
+    class="collection-item black-text">
+    {{ student.firstName }} {{ student.lastName }}
+  </a>
+</cdk-virtual-scroll-viewport>

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,16 +6,26 @@ import { Router } from '@angular/router';
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })
-export class LandingComponent implements OnInit, AfterViewInit {
-  shouldPulse = true;
+export class LandingComponent implements OnInit, AfterViewInit, OnDestroy {
+  shouldPulse = false;
+  timer = setInterval(() => {
+    this.pulse(2);
+  }, 4000);
+
 
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.pulse(2);
   }
 
   async ngAfterViewInit() {
-    await this.sleep(2);
+  }
+
+  private async pulse(times: number) {
+    console.log('pulsing')
+    this.shouldPulse = true;
+    await this.sleep(times);
     this.shouldPulse = false;
   }
 
@@ -29,5 +39,9 @@ export class LandingComponent implements OnInit, AfterViewInit {
 
   enter() {
     this.router.navigate(['app']);
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.timer);
   }
 }

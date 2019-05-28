@@ -62,7 +62,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     try {
       this.instructor = await this.courseService.getInstructor(this.courseId);
     } catch (e) {
-      console.log(e);
+      this.instructor = this.nullInstructor;
     }
   }
 

@@ -12,7 +12,17 @@ ID: {{ instructorId }}
   
   
 <h6>Assigned Courses: {{ courses.length }}</h6>
-<table *ngIf="courses && courses.length > 0">
+<cdk-virtual-scroll-viewport
+  *ngIf="courses && courses.length > 0"
+  itemSize="40"
+  class="collection scrolling">
+  <a [routerLink]="['../../','courses',course.id]"
+    *ngFor="let course of courses"
+    class="collection-item black-text">
+    {{ course.name }}
+  </a>
+</cdk-virtual-scroll-viewport>
+<!-- <table *ngIf="courses && courses.length > 0">
   <thead>
     <tr>
       <th>Name</th>
@@ -25,5 +35,5 @@ ID: {{ instructorId }}
       <td>{{ course.id }}</td>
     </tr>
   </tbody>
-</table>
+</table> -->
   

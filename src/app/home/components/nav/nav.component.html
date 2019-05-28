@@ -1,12 +1,15 @@
-<nav>
-  <div class="nav-wrapper blue-grey lighten-2">
-    <a [routerLink]="['/app']" class="brand-logo valign-wrapper center"><img src="assets/logo0558a4.png"></a>
-    <a href="#" data-target="mobile-nav" class="sidenav-trigger hide-on-large-and-up"><i class="material-icons">menu</i></a>
-    <ul class="hide-on-med-and-down">
-      <app-nav-links></app-nav-links>
-    </ul>
-  </div>
-</nav>
+<div class="navbar-fixed">
+
+  <nav>
+    <div class="nav-wrapper blue-grey lighten-2">
+      <a [routerLink]="['/app']" class="brand-logo valign-wrapper center"><img src="assets/logo0558a4.png"></a>
+      <a href="#" data-target="mobile-nav" class="sidenav-trigger hide-on-large-and-up"><i class="material-icons">menu</i></a>
+      <ul class="hide-on-med-and-down">
+        <app-nav-links></app-nav-links>
+      </ul>
+    </div>
+  </nav>
+</div>
 
 <ul class="sidenav" id="mobile-nav">
   <app-nav-links></app-nav-links>

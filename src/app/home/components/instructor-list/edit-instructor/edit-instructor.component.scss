@@ -7,3 +7,9 @@ input.ng-invalid.ng-touched {
   border-bottom: 1px solid #cc0000;
   box-shadow: 0 1px 0 0 #cc0000;
 }
+
+@media screen and (max-width: 600px) {
+  .hide-small {
+    display: none;
+  }
+}

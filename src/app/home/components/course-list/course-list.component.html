@@ -3,8 +3,8 @@
     <h3 class="center">Courses</h3>
   </div>
   
-  <div class="row">
-    <div class="col s5">
+  <div class="row pullup">
+    <div class="col s12 m5">
 
       <div class="row">
         <a [routerLink]="['add']"
@@ -14,7 +14,7 @@
         </a>
       </div>
 
-      Total: {{ totalCoursesDisplayed }}
+      <span class="hide-small">Total: {{ totalCoursesDisplayed }}</span>
       <div class="input-field">
         <i class="material-icons">filter_list</i>
         <input type="text" id="filter" [(ngModel)]="filterString">
@@ -42,7 +42,7 @@
 
     </div>
 
-    <div class="col s6 push-s1">
+    <div class="col s12 m6 offset-m1">
       <router-outlet></router-outlet>
     </div>
 

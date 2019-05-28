@@ -13,17 +13,13 @@ ID: {{ studentId }}
 
 <h6>Registered in the following courses: </h6>
 <p *ngIf="!courses || courses.length < 1">None</p>
-<table *ngIf="courses && courses.length > 0">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>ID</th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr *ngFor="let course of courses" (click)="onClick()">
-        <td><a [routerLink]="['../..', 'courses', course.id]">{{ course.name }}</a></td>
-        <td>{{ course.id }}</td>
-      </tr>
-  </tbody>
-</table>
+<cdk-virtual-scroll-viewport
+  *ngIf="courses && courses.length > 0"
+  itemSize="40"
+  class="collection scrolling">
+  <a [routerLink]="['../../','courses',course.id]"
+    *ngFor="let course of courses"
+    class="collection-item black-text">
+    {{ course.name }}
+  </a>
+</cdk-virtual-scroll-viewport>
