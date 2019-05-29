@@ -14,8 +14,8 @@
       name="name">
     <label for="name">Course Name</label>
     <span *ngIf="name.touched && name.errors" class="help-block">
-      <span *ngIf="name.errors['required']">Course name is required</span>
-      <span *ngIf="name.errors['pattern']">Name is invalid</span>
+      <ng-container *ngIf="name.errors['required']">Course name is required</ng-container>
+      <ng-container *ngIf="name.errors['pattern']">Name is invalid</ng-container>
     </span>
   </div>
   
@@ -29,7 +29,7 @@
       name="description">
     <label for="description">Course Description</label>
     <span *ngIf="description.touched && description.errors" class="help-block">
-      <span *ngIf="description.errors['pattern']">Description is invalid</span>
+      <ng-container *ngIf="description.errors['pattern']">Description is invalid</ng-container>
     </span>
   </div>
 

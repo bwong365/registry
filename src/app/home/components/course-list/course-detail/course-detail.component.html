@@ -1,8 +1,22 @@
 <div class="col right">
-  <a [routerLink]="['..', 'edit', courseId]" class="btn-floating right red waves-effect waves-light tooltipped" data-position="top" data-tooltip="Edit course"><i class="material-icons">edit</i></a>
+  <a [routerLink]="['..', 'edit', courseId]"
+    class="btn-floating right red waves-effect waves-light tooltipped"
+    data-position="top"
+    data-tooltip="Edit course">
+    <i class="material-icons">edit</i>
+  </a>
+</div>
+<div class="col right">
+  <a [routerLink]="['../..', 'reporting', courseId]"
+    class="btn-floating right blue waves-effect waves-light tooltipped"
+    data-position="down" data-tooltip="Report grades">
+    <i class="material-icons">school</i>
+  </a>
 </div>
 <h5>{{ courseName }}:</h5>
-<h6>{{ instructor.firstName }} {{ instructor.lastName }}</h6>
+<h6>
+  <a [routerLink]="['../..', instructor.id]">{{ instructor.firstName }} {{ instructor.lastName }}</a>
+</h6>
 
 <div class="divider"></div>
 <em>ID: {{ courseId }} - {{ courseDescription }}</em>

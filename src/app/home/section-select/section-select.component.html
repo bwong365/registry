@@ -1,7 +1,7 @@
 <div class="container buffer">
   <div class="row">
     <div *ngFor="let panel of panels" class="col s12 m4">
-      <div (click)="redirect(panel.text)" class="center-flex hoverable card grey waves-effect lighten-4 link">
+      <div (click)="redirect(panel.text)" class="center-flex hoverable card white waves-effect link">
         <div class="material-icons" [ngClass]="[panel.text+'-icon']">{{ panel.icon }}</div>
         <a [routerLink]="[panel.text]" class="btn-flat transparent">{{ panel.text | titlecase}}</a>
       </div>

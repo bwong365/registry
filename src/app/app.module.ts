@@ -30,6 +30,7 @@ import { HomeComponent } from './home/home.component';
 import { InstructorPlaceholderComponent } from './home/components/instructor-list/instructor-placeholder/instructor-placeholder.component';
 import { LandingComponent } from './landing/landing.component';
 import { SectionSelectComponent } from './home/section-select/section-select.component';
+import { ReportingComponent } from './home/components/course-list/reporting/reporting.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { SectionSelectComponent } from './home/section-select/section-select.com
     InstructorPlaceholderComponent,
     LandingComponent,
     SectionSelectComponent,
+    ReportingComponent,
   ],
   imports: [
     BrowserModule,
