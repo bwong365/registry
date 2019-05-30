@@ -16,8 +16,6 @@ export class ReportingComponent implements OnInit, AfterViewInit {
   course: CourseWithStudents;
   students: Student;
 
-
-
   constructor(private route: ActivatedRoute, private courseService: CourseRestService) { }
 
   ngOnInit() {

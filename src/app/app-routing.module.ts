@@ -22,6 +22,7 @@ import { LandingComponent } from './landing/landing.component';
 import { SectionSelectComponent } from './home/section-select/section-select.component';
 import { ReportingComponent } from './home/components/course-list/reporting/reporting.component';
 import { ExamListComponent } from './home/components/course-list/reporting/exam-list/exam-list.component';
+import { ReportCardComponent } from './home/components/report-card/report-card.component';
 
 const routes: Routes = [
   {path: 'app', component: HomeComponent, children: [
@@ -44,6 +45,7 @@ const routes: Routes = [
       {path: ':id', component: StudentDetailComponent},
       {path: '', component: StudentPlaceholderComponent, pathMatch: 'full'},
     ]},
+    {path: 'students/reports/:id', component: ReportCardComponent},
     {path: 'registration/:id', component: RegistrationWindowComponent},
     {path: 'reporting/:courseId', component: ReportingComponent, children: [
       {path: ':studentId', component: ExamListComponent}

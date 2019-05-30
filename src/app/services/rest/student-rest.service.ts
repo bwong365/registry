@@ -60,4 +60,8 @@ export class StudentRestService {
   public addExam(exam: ExamSubmission): Promise<Exam> {
     return this.http.post<Exam>('http://localhost:8080/api/exams', exam).toPromise();
   }
+
+  public getExams(id: number): Promise<Exam[]> {
+    return this.http.get<Exam[]>('http://localhost:8080/api/students/' + id + '/exams').toPromise();
+  }
 }

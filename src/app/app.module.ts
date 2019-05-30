@@ -33,6 +33,7 @@ import { SectionSelectComponent } from './home/section-select/section-select.com
 import { ReportingComponent } from './home/components/course-list/reporting/reporting.component';
 import { ExamListComponent } from './home/components/course-list/reporting/exam-list/exam-list.component';
 import { PreloaderComponent } from './home/components/preloader/preloader.component';
+import { ReportCardComponent } from './home/components/report-card/report-card.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { PreloaderComponent } from './home/components/preloader/preloader.compon
     ReportingComponent,
     ExamListComponent,
     PreloaderComponent,
+    ReportCardComponent,
   ],
   imports: [
     BrowserModule,
