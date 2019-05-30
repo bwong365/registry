@@ -112,7 +112,7 @@ export class EditCourseComponent implements OnInit, AfterViewInit {
     const name: string = this.form.value.name;
     const description: string = this.form.value.description;
     const instructorId: number = this.form.value.instructor;
-    const updatedCourse: Course = new Course(id, name, description, [], 'http://localhost:8080/api/instructors/' + instructorId);
+    const updatedCourse: Course = new Course(id, name, description, null, 'http://localhost:8080/api/instructors/' + instructorId);
 
     await this.courseService.updateCourse(updatedCourse);
     this.router.navigate(['../..', id], {relativeTo: this.route});

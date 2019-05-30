@@ -1,0 +1,8 @@
+@import '../../../../../styles.scss';
+
+@include entityList;
+@media screen and (min-width: $max-width-small) {
+  .pullup {
+    margin-top: -50px;
+  }
+}

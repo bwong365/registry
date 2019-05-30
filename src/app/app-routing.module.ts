@@ -21,6 +21,7 @@ import { HomeComponent } from './home/home.component';
 import { LandingComponent } from './landing/landing.component';
 import { SectionSelectComponent } from './home/section-select/section-select.component';
 import { ReportingComponent } from './home/components/course-list/reporting/reporting.component';
+import { ExamListComponent } from './home/components/course-list/reporting/exam-list/exam-list.component';
 
 const routes: Routes = [
   {path: 'app', component: HomeComponent, children: [
@@ -44,7 +45,9 @@ const routes: Routes = [
       {path: '', component: StudentPlaceholderComponent, pathMatch: 'full'},
     ]},
     {path: 'registration/:id', component: RegistrationWindowComponent},
-    {path: 'reporting/:id', component: ReportingComponent},
+    {path: 'reporting/:courseId', component: ReportingComponent, children: [
+      {path: ':studentId', component: ExamListComponent}
+    ]}
   ]},
   {path: '', component: LandingComponent, pathMatch: 'full'},
   {path: '404', component: NotFoundComponent },

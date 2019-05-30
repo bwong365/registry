@@ -19,7 +19,6 @@ export class RegistrationWindowComponent implements OnInit, AfterViewInit {
   allCourses: Course[] = [];
   registeredCourses: Course[] = [];
   unregisteredCourses: Course[] = [];
-  //filterString: string;
 
   constructor(private route: ActivatedRoute,
               private studentService: StudentRestService,
@@ -55,21 +54,6 @@ export class RegistrationWindowComponent implements OnInit, AfterViewInit {
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     }
   }
-
-  // filterCourses(courses: Course[]): Course[] {
-  //   if (this.filterString === undefined || this.filterString === '') {
-  //     return courses;
-  //   }
-
-  //   const filteredCourses: Course[] = courses.filter(
-  //     (c: Course) => {
-  //       const name = c.name;
-  //       return name.toLowerCase().indexOf(this.filterString.toLowerCase()) !== -1;
-  //     }
-  //   );
-
-  //   return filteredCourses;
-  // }
 
   onReset() {
     this.ngOnInit();

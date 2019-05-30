@@ -1,9 +1,10 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Course } from '../../models/course.model';
+import { Course, CourseWithStudents } from '../../models/course.model';
 import { EmbeddedCourses, EmbeddedStudents } from '../../models/embedded.interface';
 import { Instructor } from '../../models/instructor.model';
 import { Student } from 'src/app/models/student.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -48,4 +49,10 @@ export class CourseRestService {
   public deleteCourse(id: number): Promise<any> {
     return this.http.delete('http://localhost:8080/api/courses/' + id).toPromise();
   }
+
+  public getCourseWithStudents(id: number): Observable<any> {
+    return this.http.get('http://localhost:8080/api/courses/' + id + '?projection=courseWithStudents');
+  }
+
+
 }

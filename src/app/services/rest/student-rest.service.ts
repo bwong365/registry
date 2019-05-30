@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { EmbeddedCourses, EmbeddedStudents } from '../../models/embedded.interface';
 import { Student, StudentCourses } from '../../models/student.model';
 import { Course } from 'src/app/models/course.model';
+import { Exam, ExamSubmission } from 'src/app/models/exam.model';
 
 @Injectable({
   providedIn: 'root'
@@ -46,5 +47,17 @@ export class StudentRestService {
 
   public deleteStudent(id: number): Promise<any> {
     return this.http.delete('http://localhost:8080/api/students/' + id).toPromise();
+  }
+
+  public getExamsByIds(studentId: number, courseId: number): Promise<Exam[]> {
+    return this.http.get<Exam[]>('http://localhost:8080/api/exams/reports?studentId=' + studentId + '&courseId=' + courseId).toPromise();
+  }
+
+  public deleteExam(examId: number): Promise<any> {
+    return this.http.delete('http://localhost:8080/api/exams/' + examId ).toPromise();
+  }
+
+  public addExam(exam: ExamSubmission): Promise<Exam> {
+    return this.http.post<Exam>('http://localhost:8080/api/exams', exam).toPromise();
   }
 }

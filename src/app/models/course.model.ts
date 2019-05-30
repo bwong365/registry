@@ -6,7 +6,13 @@ export class Course {
     public id: number,
     public name: string,
     public description: string,
-    public students: Student[],
-    public instructor?: string
+    public courses?: Course[],
+    public instructor?: string,
   ) {}
+}
+
+export interface CourseWithStudents {
+  id: number;
+  name: string;
+  students: Student[];
 }

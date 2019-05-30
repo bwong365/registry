@@ -1,0 +1,45 @@
+<div>
+</div>
+
+<ng-container *ngIf="student; else loading">
+  <div class="row">
+  <div class="col s12 m6">
+    <h5>{{ student.firstName }} {{ student.lastName }}:</h5>
+  </div>
+  <div class="col s12 m6">
+      <form (ngSubmit)="addGrade()" #form="ngForm">
+        <div class="input-field">
+          <input #newGrade="ngModel" ngModel class="left browser-default" type="number" id="newGrade" name="newGrade" min="0" max="100" required>
+        </div>
+        <button [disabled]="!form.valid" class="left" type="submit">Add a grade</button>
+        <br>
+        <span *ngIf="newGrade.touched && newGrade.errors" class="left help-block">Grade must be between 0 and 100</span>
+      </form>
+    </div>
+  </div>
+
+    <div class="divider"></div>
+    <em>Grades: {{ exams ? exams.length : 'none' }}</em>
+    <br><br>
+    
+    <ng-container *ngIf="exams; else loading">
+
+      <ng-container *ngIf="exams.length > 0">
+      <h6>Student Average: {{ averageGrade }}</h6>
+      
+      <cdk-virtual-scroll-viewport
+      itemSize="40"
+      class="collection scrolling">
+      <div *ngFor="let exam of exams"
+      class="collection-item black-text">
+      {{ exam.score }}
+      <button class="right browser-default" (click)="deleteExam(exam.id)">Delete</button>
+      </div>
+   </cdk-virtual-scroll-viewport>
+  </ng-container>
+  </ng-container>
+</ng-container>
+
+<ng-template #loading>
+  <app-preloader></app-preloader>
+</ng-template>

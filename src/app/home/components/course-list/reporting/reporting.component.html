@@ -1,3 +1,54 @@
-<p>
-  reporting works!
-</p>
+<div class="container">
+  <div class="row">
+    <h3 class="center">Course Reporting</h3>
+  </div>
+
+  <div class="row pullup">
+    <div class="col right">
+      <a [routerLink]="['../..', 'courses', courseId]"
+        class="btn-floating right red waves-effect waves-light tooltipped"
+        data-position="left" data-tooltip="Cancel">
+        <i class="material-icons">arrow_back</i>
+      </a>
+    </div>
+    <ng-container *ngIf="course; else loading">
+
+      <div class="section"></div>
+        <h4 class="center">{{ course.name }}</h4>
+        <h6>ID: {{ course.id }}</h6>
+
+    
+      <div class="divider"></div>
+    
+<div class="section">
+  <div class="row">
+    <div class="col s12 m5">
+      <cdk-virtual-scroll-viewport
+        *ngIf="course.students.length > 0"
+        itemSize="40"
+        class="collection scrolling">
+        <a *ngFor="let student of course.students"
+          [routerLink]="[student.id]"
+          class="collection-item black-text">
+          {{ student.firstName }} {{ student.lastName }}
+        </a>
+      </cdk-virtual-scroll-viewport>
+    </div>
+
+    <div class="col s12 m6 offset-m1">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+</div>
+    
+    
+    </ng-container>
+  </div>
+
+</div>
+<ng-template #loading>
+  <div class="row center down">
+    <app-preloader></app-preloader>
+  </div>
+</ng-template>

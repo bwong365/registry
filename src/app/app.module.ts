@@ -31,6 +31,8 @@ import { InstructorPlaceholderComponent } from './home/components/instructor-lis
 import { LandingComponent } from './landing/landing.component';
 import { SectionSelectComponent } from './home/section-select/section-select.component';
 import { ReportingComponent } from './home/components/course-list/reporting/reporting.component';
+import { ExamListComponent } from './home/components/course-list/reporting/exam-list/exam-list.component';
+import { PreloaderComponent } from './home/components/preloader/preloader.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,8 @@ import { ReportingComponent } from './home/components/course-list/reporting/repo
     LandingComponent,
     SectionSelectComponent,
     ReportingComponent,
+    ExamListComponent,
+    PreloaderComponent,
   ],
   imports: [
     BrowserModule,
