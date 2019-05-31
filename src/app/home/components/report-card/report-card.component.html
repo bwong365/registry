@@ -22,7 +22,7 @@
         </tbody>
       </table>
   
-      <h4>Average: </h4>{{ calculateTotalAverage() }}
+      <h4>Average: </h4>{{ examScores ? calculateTotalAverage() : 'N/A'}}
     </ng-container>
   </ng-container>
 </div>

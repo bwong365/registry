@@ -2,6 +2,7 @@ import { Course } from './course.model';
 import { Page } from './page.interface';
 import { Student } from './student.model';
 import { Instructor } from './instructor.model';
+import { Exam } from './exam.model';
 
 export interface EmbeddedCourses {
   _embedded: {
@@ -25,4 +26,10 @@ export interface EmbeddedInstructors {
   };
   _links: {};
   page: Page;
+}
+
+export interface EmbeddedExams {
+  _embedded: {
+    exams: Exam[]
+  };
 }

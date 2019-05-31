@@ -24,31 +24,40 @@ export class ReportCardComponent implements OnInit {
   }
 
   async getData() {
-    const params: Params = this.route.params.subscribe()
-    const id = params.id;
-    this.student = await this.studentService.getStudentById(id);
-    this.courses = await this.studentService.getCourses(id);
-    this.exams = await this.studentService.getExams(id);
-    this.courses.forEach(course => {
-      this.examScores[course.id] =(this.calculateAverage(course.id));
-    })
+    this.route.params.subscribe(
+      async (params) => {
+        const id = params.id;
+        this.student = await this.studentService.getStudentById(id);
+        this.courses = (await this.studentService.getCourses(id)).sort((a, b) => a.id - b.id);
+        this.exams = await this.studentService.getExams(id);
+        this.courses.forEach((course: Course) => {
+          const average = this.calculateAverage(course.id);
+          if (average) {
+            this.examScores[course.id] = Math.round(average * 10) / 10;
+          }
+        });
+      });
   }
 
   calculateAverage(courseId: number): number {
-    const courseExams: Exam[] = this.exams.filter(
-      (exam: Exam) => +exam.course.id === +courseId
-    )
-    console.log(courseExams);
-    const courseScores: number[] = courseExams.map(exam => exam.score);
-
-    if (courseScores.length < 1) return null;
-
+    const courseExams = this.exams.filter(exam => {
+      const id = +(exam.course.hasOwnProperty('id') ? exam.course.id : exam.course);
+      return +id === +courseId;
+    });
+    if (!courseExams || courseExams.length === 0) {
+      return null;
+    }
+    const courseScores: number[] = courseExams.map(exam => +exam.score);
     return courseScores.reduce((acc, val) => acc + val) / courseScores.length;
   }
 
   calculateTotalAverage() {
-    const scoreList = Object.keys(this.examScores).map(key => this.examScores[key]);
-    return Math.round((scoreList.reduce((acc, val) => acc + val) / scoreList.length * 10)) / 10;
+    const keys = Object.keys(this.examScores);
+    const scores = keys.map(key => this.examScores[key]);
+    if (scores.length > 0) {
+      return scores.reduce((acc, val) => acc + val) / scores.length;
+    }
+    return null;
   }
 
 }
