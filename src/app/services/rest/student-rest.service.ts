@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { EmbeddedCourses, EmbeddedStudents } from '../../models/embedded.interface';
+import { EmbeddedCourses, EmbeddedStudents, EmbeddedExams } from '../../models/embedded.interface';
 import { Student, StudentCourses } from '../../models/student.model';
 import { Course } from 'src/app/models/course.model';
 import { Exam, ExamSubmission } from 'src/app/models/exam.model';
@@ -62,6 +62,12 @@ export class StudentRestService {
   }
 
   public getExams(id: number): Promise<Exam[]> {
-    return this.http.get<Exam[]>('http://localhost:8080/api/students/' + id + '/exams').toPromise();
+    return new Promise<Exam[]>(
+      (resolve, reject) => {
+         this.http.get<EmbeddedExams>('http://localhost:8080/api/students/' + id + '/exams').subscribe(
+           (data: EmbeddedExams) => resolve(data._embedded.exams),
+           err => reject(err)
+         );
+      });
   }
 }
