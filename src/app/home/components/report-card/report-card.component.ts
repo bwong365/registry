@@ -55,7 +55,8 @@ export class ReportCardComponent implements OnInit {
     const keys = Object.keys(this.examScores);
     const scores = keys.map(key => this.examScores[key]);
     if (scores.length > 0) {
-      return scores.reduce((acc, val) => acc + val) / scores.length;
+      const totalAverage = scores.reduce((acc, val) => acc + val) / scores.length;
+      return Math.round(totalAverage * 10) / 10;
     }
     return null;
   }
